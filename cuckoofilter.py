@@ -60,7 +60,7 @@ class CuckooFilter(object):
         assoc = 4
         num_buckets = upperpower2(max_num_keys / assoc)
         frac = max_num_keys / num_buckets / assoc
-        # todo check why
+
         if frac > 0.96:
             num_buckets = num_buckets << 1
 
@@ -81,7 +81,6 @@ class CuckooFilter(object):
         return 1.0 * len(self) / self._table.size_in_tags()
 
     def _taghash(self, hv):
-        # todo why it differs a bit from JS implementation?
         tag = hv & ((1 << self.bits_per_item) - 1)
         tag += (tag == 0)
         return tag
@@ -94,7 +93,6 @@ class CuckooFilter(object):
         """
         hashed_key = hash_djb2(item)
 
-        #return ((hashed_key >> 32) % len(self._table), self._taghash(hashed_key))
         return ((hashed_key >> 8) % len(self._table), hashed_key & 0xff)
 
     def _alt_index(self, index, tag):
