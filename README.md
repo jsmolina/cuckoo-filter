@@ -6,6 +6,6 @@ and https://jsfiddle.net/nojoL16o/2/
 Original paper in: https://www.cs.cmu.edu/~dga/papers/cuckoo-conext2014.pdf
 
 # TODO
-* Lua-Redis implementation  (http://redis.io/commands/EVAL#bitop http://blog.jupo.org/2013/06/12/bitwise-lua-operations-in-redis/)
-* Bring Packedtable from C.
-* EVAL perf with pytest-benchmark
+- [x] Lua-Redis implementation done, evaluate SETBIT alternative.
+- [ ] Bring Packedtable from C.
+- [x] EVAL perf 
