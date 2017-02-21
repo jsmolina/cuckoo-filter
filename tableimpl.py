@@ -75,9 +75,3 @@ class Table32Bits(object):
         ss += "\t\tTotal # slots: " + str(self.size_in_tags()) + "\n"
         return ss
 
-
-t = Table32Bits(8)
-t._write_tag(0, 0, 999)
-print t._read_tag(0, 0)
-
-print "bye"
