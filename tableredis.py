@@ -71,6 +71,23 @@ class RedisTable32Bits(object):
         else:
             return True, None
 
+    def insert_tag_to_bucket_slow(self, i, tag, kickout):
+        # unused by default but intended to demonstrate how the performance
+        # improves if all the work is done at redis level
+        oldtag = None
+
+        for j in range(self.tags_per_bucket):
+            if self._read_tag(i, j) == 0:
+                self._write_tag(i, j, tag)
+                return True, None
+
+        if kickout:
+            r = randint(0, self.tags_per_bucket)
+            # oldtag will contain kicked out tag
+            oldtag = self._read_tag(i, r)
+            self._write_tag(i, r, tag)
+        return False, oldtag
+
     def find_tag_in_buckets(self, i1, i2, tag):
         for j in range(self.tags_per_bucket):
             if self._read_tag(i1, j) == tag or self._read_tag(i2, j) == tag:
