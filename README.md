@@ -6,6 +6,6 @@ and https://jsfiddle.net/nojoL16o/2/
 Original paper in: https://www.cs.cmu.edu/~dga/papers/cuckoo-conext2014.pdf
 
 # TODO
-[ ] Lua-Redis implementation done, evaluate SETBIT alternative.
-[ ] Bring Packedtable from C.
-[ ] EVAL perf 
+- [ ] Lua-Redis implementation done, evaluate SETBIT alternative.
+- [ ] Bring Packedtable from C.
+- [ ] EVAL perf 
